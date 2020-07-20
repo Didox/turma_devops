@@ -16,7 +16,6 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "jest": "^26.1.0",
-    "cypress": "^4.9.0"
+    "jest": "^26.1.0"
   }
 }

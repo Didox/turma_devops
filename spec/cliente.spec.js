@@ -6,15 +6,21 @@ test('Testando se o objeto cliente tem a propriedade nome', () => {
     expect(cliente.nome).not.toBeUndefined();
 });
 
-test('Testando se o objeto cliente tem a propriedade cpf', () => {
+test('Testando validação de CPF, válido', () => {
     let cliente = new Cliente()
     cliente.cpf = "418.825.350-90"
-    expect(cliente.validarCPF(cliente.cpf)).toBe(true);
+    expect(cliente.validarCPF()).toBe(true);
+});
+
+test('Testando validação de CPF, inválido', () => {
+    let cliente = new Cliente()
+    cliente.cpf = "418.825.350-10"
+    expect(cliente.validarCPF()).toBe(false);
 });
 
 test('Testando cpf undefined', () => {
     let cliente = new Cliente()
     cliente.cpf = undefined
-    expect(cliente.validarCPF(cliente.cpf)).toBe(false);
+    expect(cliente.validarCPF()).toBe(false);
 });
 

@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
- 
 context('testar Home Page', () => {
   beforeEach(() => {
     cy.visit('/')

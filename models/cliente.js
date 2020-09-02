@@ -3,6 +3,11 @@ class Cliente {
     this.nome = nome;
     this.cpf = cpf;
   }
+
+  tudoLetraMinuscula(){
+    return this.nome.toLowerCase()
+  }
+
   validarCPF() {
     if(!this.cpf) return false
     let strCPF = this.cpf.replace(/\.|\-/g, "")

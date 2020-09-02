@@ -6,6 +6,12 @@ test('Testando se o objeto cliente tem a propriedade nome', () => {
     expect(cliente.nome).not.toBeUndefined();
 });
 
+test('Testando função em nome com letra minúscula', () => {
+    let cliente = new Cliente()
+    cliente.nome = "Erick SOARES"
+    expect(cliente.tudoLetraMinuscula()).toBe("erick soares");
+});
+
 test('Testando validação de CPF, válido', () => {
     let cliente = new Cliente()
     cliente.cpf = "418.825.350-90"

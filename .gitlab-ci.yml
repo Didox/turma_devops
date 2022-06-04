@@ -3,6 +3,7 @@ image: node:16
 stages:
 - test
 - comportamento
+- build-push-docker
 
 test:
   stage: test
@@ -19,6 +20,22 @@ comportamento:
   - npm install
   - nohup npm start &
   - npm run bdd
+
+build-push-docker:
+  image: docker:latest
+  stage: build-push-docker
+
+  services:
+    - docker:dind
+
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+
+  dependencies:
+  - comportamento
+  script:
+  - docker build -t didox/app-nodejs-desafio-k8s .
+  - docker push didox/app-nodejs-desafio-k8s
 
 
 

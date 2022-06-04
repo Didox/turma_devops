@@ -1,4 +1,10 @@
-image: node:16
+image: docker
+
+services:
+- docker:dind
+
+before_script:
+- docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
 
 stages:
 - test
@@ -6,6 +12,7 @@ stages:
 - build-push-docker
 
 test:
+  image: node:16
   stage: test
   script:
   - npm install
@@ -22,14 +29,6 @@ comportamento:
   - npm run bdd
 
 build-push-docker:
-  image: docker
-
-  services:
-  - docker:dind
-
-  before_script:
-  - docker login -u "$CI_REGISTRY_USER" "$CI_REGISTRY_PASSWORD" --password-stdin
-
   stage: build-push-docker
   dependencies:
   - comportamento

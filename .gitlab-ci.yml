@@ -22,15 +22,15 @@ comportamento:
   - npm run bdd
 
 build-push-docker:
-  image: docker:latest
-  stage: build-push-docker
+  image: docker
 
   services:
-    - docker:dind
+  - docker:dind
 
   before_script:
-    - docker login -u $CI_REGISTRY_USER -p'$CI_REGISTRY_PASSWORD'
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
 
+  stage: build-push-docker
   dependencies:
   - comportamento
   script:

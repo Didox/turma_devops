@@ -2,6 +2,7 @@ image: node:16
 
 stages:
 - test
+- comportamento
 
 test:
   stage: test
@@ -9,6 +10,14 @@ test:
   - npm install
   - npm run tdd
 
+comportamento:
+  image: cypress/browsers
+  stage: comportamento
+  dependencies:
+  - test
+  script:
+  - npm install
+  - npm run bdd
 
 
 

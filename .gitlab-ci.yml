@@ -17,6 +17,7 @@ comportamento:
   - test
   script:
   - npm install
+  - nohup npm start &
   - npm run bdd
 
 

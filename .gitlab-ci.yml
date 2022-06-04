@@ -1,0 +1,16 @@
+image: node:16
+
+stages:
+- test
+
+test:
+  stage: test
+  script:
+  - npm install
+  - npm run tdd
+
+
+
+
+
+
